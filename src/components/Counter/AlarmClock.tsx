@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import {
     Observable,
+    Observer,
     Subject,
     Subscription,
     concat,
@@ -42,11 +43,15 @@ const AlarmClock: React.FC = () => {
             snoozeAlarm$.pipe(takeUntil(dismiss$)),
             of("Have a nice day!")
         );
-        const subscribtion: Subscription = observable$.subscribe({
+
+        const observer: Observer<number | string> = {
             next: (val) => setTime(val),
             error: (err) => console.log(err),
-            complete: () => console.log("completed"),
-        });
+            complete: () => console.log("Countdown completed!"),
+        };
+
+        const subscribtion: Subscription = observable$.subscribe(observer);
+
         return () => subscribtion.unsubscribe();
     }, [startValue]);
     return (
