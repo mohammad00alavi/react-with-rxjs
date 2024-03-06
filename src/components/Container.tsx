@@ -4,7 +4,7 @@ import { Box } from "@mui/material";
 
 const Container: React.FC<EmbedChildren> = ({ children }) => {
     return (
-        <Box gap={4} sx={{ display: "flex", flexDirection: "column" }}>
+        <Box gap={2} sx={{ display: "flex", flexDirection: "column" }}>
             {children}
         </Box>
     );

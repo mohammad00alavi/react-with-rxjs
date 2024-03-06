@@ -11,7 +11,7 @@ const Navbar = () => {
                     padding: 2,
                 }}
             >
-                <h1 style={{ fontSize: 16 }}>RxJs Components</h1>
+                <h1 style={{ fontSize: 16 }}>Messenger</h1>
                 <MessageCount />
             </Box>
         </Card>
