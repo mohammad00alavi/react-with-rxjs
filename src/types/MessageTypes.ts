@@ -7,5 +7,6 @@ export type messageTypes = {
 export type messageObserverTypes = {
     sendMessage: (x: string) => void;
     clearMessage: () => void;
-    onMessage: () => Observable<messageTypes>;
+    getHistory: () => Observable<messageTypes[]>;
+    getHistoryCount: () => Observable<number>;
 };
