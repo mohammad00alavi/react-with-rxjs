@@ -1,14 +1,16 @@
 import "./App.css";
 import Counter from "./components/Counter/Counter";
 import AlarmClock from "./components/AlarmClock/AlarmClock";
-import MessageContainer from "./components/Message/MessageContainer";
+import MessagesList from "./components/Message/MessagesList";
+import Message from "./components/Message/Message";
 
 function App() {
     return (
         <>
             <Counter />
             <AlarmClock />
-            <MessageContainer />
+            <MessagesList />
+            <Message />
         </>
     );
 }

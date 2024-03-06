@@ -1,19 +1,10 @@
-import { Observable, Subject } from "rxjs";
-
-export type messageTypes = {
-    text: string;
-};
-
-type messageObserverTypes = {
-    sendMessage: (x: string) => void;
-    clearMessage: () => void;
-    onMessage: () => Observable<messageTypes>;
-};
+import { Subject } from "rxjs";
+import { messageObserverTypes, messageTypes } from "../types/MessageTypes";
 
 const messageSubject$ = new Subject<messageTypes>();
 
 export const messageObserver: messageObserverTypes = {
     sendMessage: (message: string) => messageSubject$.next({ text: message }),
-    clearMessage: () => messageSubject$.next({ text: "" }),
+    clearMessage: () => messageSubject$.next(), // TODO - fix type error here
     onMessage: () => messageSubject$.asObservable(),
 };

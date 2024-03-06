@@ -1,21 +1,17 @@
 import React, { useEffect, useState } from "react";
-import {
-    messageObserver,
-    messageTypes,
-} from "../../observables/messageObserver";
-import Message from "./Message";
+import { messageObserver } from "../../observables/messageObserver";
+import { messageTypes } from "../../types/MessageTypes";
 
-const MessageContainer: React.FC = () => {
+const MessagesList: React.FC = () => {
     const [messages, setMessages] = useState<messageTypes[]>([]);
     useEffect(() => {
         const subscription = messageObserver
             .onMessage()
             .subscribe((message: messageTypes) => {
-                if (message.text === "") {
-                    setMessages([]);
-                }
                 if (message) {
                     setMessages((prevMessages) => [...prevMessages, message]);
+                } else {
+                    setMessages([]);
                 }
             });
 
@@ -26,13 +22,15 @@ const MessageContainer: React.FC = () => {
         };
     }, [messages]);
     return (
-        <div>
-            {messages.map((message, index) => (
-                <div key={index}>{message.text}</div>
-            ))}
-            <Message />
-        </div>
+        <ul>
+            {messages &&
+                messages.map((message, index) => (
+                    <li style={{ listStyle: "none" }} key={index}>
+                        {message.text}
+                    </li>
+                ))}
+        </ul>
     );
 };
 
-export default MessageContainer;
+export default MessagesList;
