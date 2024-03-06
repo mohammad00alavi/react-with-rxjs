@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import { Result, autoComplete } from "../../observables/bookService";
+import { Card } from "@mui/material";
 
 const BookList: React.FC = () => {
     const [results, setResults] = useState<Result[]>([]);
@@ -16,7 +17,7 @@ const BookList: React.FC = () => {
         }
     }, []);
     return (
-        <div>
+        <Card>
             <input type="text" ref={inputRef} />
             <p>Search results:</p>
             {results &&
@@ -26,7 +27,7 @@ const BookList: React.FC = () => {
                     .map((result, index) => (
                         <li key={index}>{result.title}</li>
                     ))}
-        </div>
+        </Card>
     );
 };
 

@@ -1,3 +1,4 @@
+import { Card } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import { Observable, Subscription, fromEvent } from "rxjs";
 
@@ -19,10 +20,10 @@ const Counter: React.FC = () => {
         return () => subscribtion.unsubscribe();
     }, []);
     return (
-        <div>
+        <Card>
             <p>{count}</p>
             <button id="button">Click me!</button>
-        </div>
+        </Card>
     );
 };
 

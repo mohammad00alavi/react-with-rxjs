@@ -1,3 +1,4 @@
+import { Card } from "@mui/material";
 import { useEffect, useState } from "react";
 import {
     Observable,
@@ -55,7 +56,7 @@ const AlarmClock: React.FC = () => {
         return () => subscribtion.unsubscribe();
     }, [startValue]);
     return (
-        <>
+        <Card>
             <p>{time}</p>
             <input
                 type="number"
@@ -68,7 +69,7 @@ const AlarmClock: React.FC = () => {
             <button id="dismissBtn" onClick={() => action$.next("dismiss")}>
                 Dismiss
             </button>
-        </>
+        </Card>
     );
 };
 

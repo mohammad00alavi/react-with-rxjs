@@ -1,16 +1,9 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useRef } from "react";
 import { messageService } from "../../observables/messageService";
+import { Box, Button, Card, Input } from "@mui/material";
 
 const Message: React.FC = () => {
     const inputRef = useRef<HTMLInputElement>(null);
-    const [count, setCount] = useState<number>(0);
-    useEffect(() => {
-        const subscription = messageService
-            .getHistoryCount()
-            .subscribe(setCount);
-
-        return () => subscription.unsubscribe();
-    }, []);
 
     const sendMessage = () => {
         if (inputRef.current?.value) {
@@ -24,12 +17,32 @@ const Message: React.FC = () => {
     };
 
     return (
-        <div>
-            <input type="text" ref={inputRef} />
-            <button onClick={sendMessage}>Send Message</button>
-            <button onClick={clearMessages}>Clear Messages</button>
-            <p>Number of Messages: {count}</p>
-        </div>
+        <Card>
+            <Box
+                gap={2}
+                sx={{
+                    display: "flex",
+                    flexDirection: "column",
+                    justifyContent: "center",
+                    alignItems: "center",
+                    padding: 1,
+                }}
+            >
+                <Input
+                    type="text"
+                    inputRef={inputRef}
+                    color="primary"
+                    placeholder="Write a message here..."
+                    onKeyDown={(e) => e.key === "Enter" && sendMessage()}
+                />
+                <Button variant="contained" onClick={sendMessage}>
+                    Send Message
+                </Button>
+                <Button variant="outlined" onClick={clearMessages}>
+                    Clear Messages
+                </Button>
+            </Box>
+        </Card>
     );
 };
 
