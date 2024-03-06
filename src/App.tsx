@@ -3,6 +3,7 @@ import Counter from "./components/Counter/Counter";
 import AlarmClock from "./components/AlarmClock/AlarmClock";
 import MessagesList from "./components/Message/MessagesList";
 import Message from "./components/Message/Message";
+import BookList from "./components/BookList/BookList";
 
 function App() {
     return (
@@ -11,6 +12,7 @@ function App() {
             <AlarmClock />
             <MessagesList />
             <Message />
+            <BookList />
         </>
     );
 }
