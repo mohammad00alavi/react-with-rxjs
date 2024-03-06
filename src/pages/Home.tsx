@@ -17,6 +17,9 @@ const Home = () => {
             <Link to={"/book-search"}>
                 <Button variant="outlined">Auto Complete Search</Button>
             </Link>
+            <Link to={"/todo-list"}>
+                <Button variant="outlined">Todo List</Button>
+            </Link>
         </Container>
     );
 };

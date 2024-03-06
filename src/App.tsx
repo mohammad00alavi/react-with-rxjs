@@ -6,6 +6,7 @@ import { Route, Routes } from "react-router-dom";
 import Home from "./pages/Home";
 import ComponentPageLayout from "./layout/ComponentPageLayout";
 import MessageContainer from "./components/Message/MessageContainer";
+import TodoList from "./components/TodoList/TodoList";
 
 function App() {
     return (
@@ -16,6 +17,7 @@ function App() {
                 <Route path="alarm" element={<AlarmClock />} />
                 <Route path="message-list" element={<MessageContainer />} />
                 <Route path="book-search" element={<BookList />} />
+                <Route path="todo-list" element={<TodoList />} />
             </Route>
         </Routes>
     );
