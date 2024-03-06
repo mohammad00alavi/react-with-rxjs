@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { messageObserver } from "../../observables/messageObserver";
+import { messageService } from "../../observables/messageService";
 import { messageTypes } from "../../types/MessageTypes";
 
 const MessagesList: React.FC = () => {
     const [messages, setMessages] = useState<messageTypes[]>([]);
     useEffect(() => {
-        const subscription = messageObserver
+        const subscription = messageService
             .onMessage()
             .subscribe((message: messageTypes) => {
                 if (message) {
