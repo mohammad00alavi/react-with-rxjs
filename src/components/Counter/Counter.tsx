@@ -22,7 +22,9 @@ const Counter: React.FC = () => {
     return (
         <Card>
             <p>{count}</p>
-            <button id="button">Click me!</button>
+            <button id="button" data-testid="button">
+                Click me!
+            </button>
         </Card>
     );
 };

@@ -1,13 +1,14 @@
-import React, { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Result, autoComplete } from "../../observables/bookService";
 import { Card } from "@mui/material";
+import { BookListProps } from "../../types/ComponentTypes";
 
-const BookList: React.FC = () => {
+const BookList = ({ observable = autoComplete }: BookListProps) => {
     const [results, setResults] = useState<Result[]>([]);
     const inputRef = useRef<HTMLInputElement>(null);
     useEffect(() => {
         if (inputRef?.current) {
-            const subscription = autoComplete(inputRef.current).subscribe(
+            const subscription = observable(inputRef.current).subscribe(
                 (newResults) => setResults(newResults)
             );
 
