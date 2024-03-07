@@ -57,7 +57,7 @@ const AlarmClock: React.FC = () => {
     }, [startValue]);
     return (
         <Card>
-            <p>{time}</p>
+            <p data-testid="flag-title">{time}</p>
             <input
                 type="number"
                 onChange={(e) => setStartValue(parseInt(e.target.value) || 0)}
@@ -66,7 +66,11 @@ const AlarmClock: React.FC = () => {
             <button id="snoozeBtn" onClick={() => action$.next("snooze")}>
                 Snooze
             </button>
-            <button id="dismissBtn" onClick={() => action$.next("dismiss")}>
+            <button
+                id="dismissBtn"
+                data-testid="dismissBtn"
+                onClick={() => action$.next("dismiss")}
+            >
                 Dismiss
             </button>
         </Card>
